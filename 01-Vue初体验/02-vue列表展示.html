@@ -8,6 +8,9 @@
 <body>
 <div id="app">
     <h1>{{message}}</h1>
+    <ul >
+        <li v-for="item in movies">{{item}}</li>
+    </ul>
 </div>
 <script>
     let app = new Vue({

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <h2>当前计数：{{counter}}</h2>
+<!--    <button v-on:click="counter++">+</button>-->
+<!--    <button v-on:click="counter&#45;&#45;">-</button>-->
+<!--    事件绑定有一个语法糖 @click 与 v-on:click 相同的作用-->
+    <button v-on:click="add">+</button>
+    <button v-on:click="sub">-</button>
+</div>
+<script>
+    /*
+    计数器的MVVM
+    1. 我们的计数器中就有严格的MVVM思想
+     - View依然是我们的DOM
+     - Model就是我们抽离出来的obj
+     - ViewModel就是我们创建的Vue对象实例
+    2. 他们之间如何工作的
+     - 首先ViewModel通过Data Binding让obj中的数据实时的在DOM中显示
+     - 其次ViewModel通过DOM Listener来监听DOM事件，并通过methods中的操作，来改变obj中的数据.
+    有了Vue榜之我们完成VueModel层的任务，在后续的开发，我们就可以专注于数据的处理，以及DOM的编写工作了。
+     */
+    const obj = {
+        counter: 0,
+        message: 'abc'
+    };
+    let aaa = {
+      aaa: 3,
+      bbb: 4,
+    };
+    let app = new Vue({
+            el: '#app',
+        data: obj,
+        methods: {
+                add: function () {
+                    this.counter ++;
+                    this.mylog('add')
+                },
+                sub: function () {
+                    this.counter --;
+                    this.mylog('sub')
+                },
+                mylog: function (message) {
+                    console.log(message+'被执行了')
+                }
+        }
+        });
+
+
+    // 1.拿button元素
+
+    // 2.添加监听事件
+
+</script>
+
+</body>
+
+</html>
