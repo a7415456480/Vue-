@@ -47,8 +47,23 @@
                     this.mylog('sub')
                 },
                 mylog: function (message) {
-                    console.log(message+'被执行了')
-                }
+                    console.log(message + '被执行了')
+                },
+                // created: function () {
+                //     console.log('created')
+                // },
+                // mounted: function () {
+                //     console.log('mounted')
+                // }
+        },
+        beforeCreate: function () {
+            console.log("Vue创建之前执行")
+        },
+        created: function () {
+            console.log("Vue创建以后")
+        },
+        mounted: function () {
+            console.log("Vue挂载组件")
         }
         });
 
