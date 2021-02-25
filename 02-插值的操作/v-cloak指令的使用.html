@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+<!--  使用CSS属性选择器来处理VUE未加载是将其给隐藏掉-->
+<!--  在vue未解析的时候div标签中将会拥有v-cloak属性-->
+<!--  而vue解析以后将会将所有不需要的属性清除掉，这样vue就可以显示该标签了-->
+  <style>
+    [v-cloak]{
+        display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="app" v-cloak>
+      <h2>{{message}}</h2>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+      setTimeout(function (){
+        const vue = new Vue({
+          el:'#app',
+          data: {
+            message: '你好',
+          }
+        })
+      }, 10000)
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!-- 使用该指令可以在标签内解析html代码-->
+  <div id="app">
+    <h2>{{message}}</h2>
+    <h2 v-html="u"></h2>
+    <h2>{{u}}</h2>
+  </div>
+    <script src="../js/vue.js"></script>
+    <script>
+      const vue = new Vue({
+          el:'#app',
+          data: {
+            message: '你好',
+            u: '<a href="http://www.baidu.com" target="_blank">百度一下</a>',
+          }
+      })
+    </script>
+</body>
+</html>

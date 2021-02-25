@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <div id="app">
+    <h2>{{message}} ,你在吗</h2>
+    <h2 v-text="message">,你在吗</h2>
+<!--    v-text 会覆盖html中的文本，因为该指令会重新渲染对应的标签，建议使用Mustache语法{{}}}-->
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+      const vue = new Vue({
+          el:'#app',
+          data: {
+            message: '你好',
+          }
+      })
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <div id="app">
+    <h2>{{message}}</h2>
+<!--    v-pre 能将标签内的vue解析功能去除，将直接输出html中的信息-->
+    <h2 v-pre>{{message}}}</h2>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+      const vue = new Vue({
+          el:'#app',
+          data: {
+            message: '你好',
+          }
+      })
+    </script>
+</body>
+</html>
