@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    .active{
+        color: red;
+    }
+  </style>
+</head>
+<body>
+<!-- 作业需求： 点击列表中的那一项那么该项的文字变成红色-->
+  <div id="app">
+    <ul>
+      <li v-for="(m, index) in movies" v-on:click="changeColor(index)" :class="{active: m.active}">{{index}} -- {{m.m}}</li>
+    </ul>
+    <button></button>
+  </div>
+    <script src="../js/vue.js"></script>
+    <script>
+      const vue = new Vue({
+          el:'#app',
+          data: {
+            movies: [{m:'海王',active: false},{m:'海尔兄弟',active: false},{m:'进击的巨人',active: false}],
+          },
+        methods: {
+            changeColor: function (index){
+              for(let i =0; i<this.movies.length; i++){
+                this.movies[i].active = false;
+              }
+              this.movies[index].active = true;
+            }
+        }
+      })
+    </script>
+</body>
+</html>

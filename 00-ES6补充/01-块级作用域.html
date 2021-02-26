@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<button>按钮1</button>
+<button>按钮2</button>
+<button>按钮3</button>
+<button>按钮4</button>
+<button>按钮5</button>
+
+
+<script>
+  // ES5中了var(变量)是没有作用域的,ES6中引入了let(定义变量,有块级作用域),const(定义常量,无块级作用域但是无法修改值)这个两个关键字
+  // ES5之前因为if和for都没有块级作用域的概念，所以在很多时候，我们都必须借助于function的
+  // 作用域来解决应用外面变量的问题
+  // ES6中,加入了let, let它是有块级作用域的
+  // 1.变量作用域：变量在什么范围内是可用的.
+  // {
+  //   var name = 'why';
+  //   console.log(name);
+  // }
+  // console.log(name);
+  // 2.没有块级作用域引起的问题：if的块级
+  // 没有块级作用域时，块内的元素将有可能被外部修改，造成数据不一致
+  // var abc;
+  // if(true){
+  //   var name = 'why';
+  //   abc = function (){
+  //     console.log(name);
+  //   }
+  //   // abc();
+  // }
+  // abc();
+  // console.log(name);
+
+  // 3.没有块级作用域引起的问题：for的块级
+  // 为什么闭包可以解决问题：函数是有作用域的.
+  var btns = document.getElementsByTagName('button');
+  // for (var i=0; i<btns.length; i++){
+  //   btns[i].addEventListener('click', function (){
+  //     console.log('第'+ i + '个按钮被点击');
+  //   })
+  // }
+  // 因为在js中if是没有作用域，for也没有, 只有函数才有作用域
+  // 使用闭包解决上面问题
+  // 以下代码相当于建立了多个函数，并将每一个函数设置到对于的监听中
+  // for(var i=0; i< btns.length; i++){
+  //   (function (i) {
+  //     btns[i].addEventListener('click',function () {
+  //       console.log('第' + i + '个变量被点击');
+  //     })
+  //   })(i);
+  // }
+  // 相当于声明了一个函数，并且这个函数可以立即执行
+  (function (i) {
+    console.log(i)
+  })('abc');
+  // 使用ES6中的let就可以完美解决上面作用域的问题
+  for(let i=0; i<btns.length; i++){
+    btns[i].addEventListener('click',function (){
+      console.log('第' + i + '个变量被点击');
+    })
+  }
+</script>
+</body>
+</html>

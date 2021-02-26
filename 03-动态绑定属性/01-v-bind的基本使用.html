@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <div id="app">
+    <h2>{{message}}</h2>
+<!--    错误的使用方法,mustache语法只能在标签内容中使用，不能在标签属性中使用-->
+<!--    <a href="{{imgUrl}}">图片地址</a>-->
+<!--    正确的做法: 使用v-bind指令-->
+<!--    v-bind:标签属性，可以动态绑定属性-->
+    <img v-bind:src="imgURl"></img>
+    <a v-bind:href="baiduURL" target="_blank"><img v-bind:src="imgURl"></a>
+<!--    v-bind 语法糖写法 :  与 v-bind: 相同功能-->
+    <a :="baiduURL">百度</a>
+  </div>
+    <script src="../js/vue.js"></script>
+    <script>
+      const vue = new Vue({
+          el:'#app',
+          data: {
+            message: '你好',
+            imgURl: '../img/1.jpg',
+            baiduURL: 'https://www.baidu.com',
+          }
+      })
+    </script>
+</body>
+</html>

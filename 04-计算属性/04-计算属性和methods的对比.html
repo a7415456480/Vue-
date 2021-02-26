@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <div id="app">
+        <h2>{{message}}</h2>
+<!--    1.直接拼接：语法过于繁琐-->
+    <h2>{{firstName}} {{lastName}}</h2>
+<!--    2.通过定义methods：每次调用方法时都会重新计算一次-->
+    <h2>{{fullName()}}</h2>
+    <h2>{{fullName()}}</h2>
+    <h2>{{fullName()}}</h2>
+    <h2>{{fullName()}}</h2>
+<!--    3.通过computed(计算属性)：只计算一次，以后调用都调用缓存的数据，如果数据发生改变将重新计算-->
+    <h2>{{cFullName}}</h2>
+    <h2>{{cFullName}}</h2>
+    <h2>{{cFullName}}</h2>
+    <h2>{{cFullName}}</h2>
+<!--    如果数据不会发生修改就是用computed计算属性，如果发生修改就使用methods来每次调用都修改数据-->
+    <h2></h2>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+      const vue = new Vue({
+        el:'#app',
+        data: {
+          message: '你好',
+          firstName: 'kobe',
+          lastName: 'Bryant',
+        },
+        methods: {
+          fullName: function (){
+            console.log('fullName')
+            return this.firstName + ' ' + this.lastName;
+          }
+        },
+        computed: {
+          cFullName: function () {
+            console.log('cFullName')
+            return this.firstName + ' ' + this.lastName;
+          }
+        }
+      })
+    </script>
+</body>
+</html>
