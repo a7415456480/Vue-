@@ -14,6 +14,17 @@
 
 <script>
 
+
+  /*
+  * 没有闭包的写法，由于在ES5中var定义的变量没有作用域的观念导致对象被反复修改
+  * var btns = document.getElementsByTagName('button');
+  *   for(var i=0; i<btns.length; i++){
+    btns[i].addEventListener('click',function (){
+      console.log('第' + i + '个变量被点击');
+    })
+  }
+  * */
+
   const btns = document.getElementsByTagName('button');
 
   for(let i=0; i<btns.length; i++){

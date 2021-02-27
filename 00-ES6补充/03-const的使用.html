@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--
+  const 关键字修饰的对象在初始化之后是无法修改的。
+  如果我们定义了一个对象,而且这对象不需要被修改，这时候就用const去修饰该对象
+  建议：在开发中，优先使用const，只有需要改变某一个标识符的时候才使用let
+-->
+<script>
+  // 1.注意一：const定义并初始化对象之后，该对象无法修改。
+  // const name = 'why';
+  // name = 213123;
+
+  // 2.注意二：在使用const定义标识符，必须进行赋值
+  // const name;
+
+  // 3.注意三：常量的含义是指向的对象不能修改，但是可以改变对象内部的属性。
+  const obj = {
+    name: 'why',
+    age: 18,
+    hegit: 1.88
+  }
+  obj.age = 333;
+</script>
+</body>
+</html>

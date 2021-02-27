@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <div id="app">
+<!--    事件调用的方法没有参数-->
+    <button @click="btnClick">按钮1</button>
+    <button @click="btnClick()">按钮2</button>
+<!--    在事件定义时，写函数时省略的小括号-->
+<!--    在事件调用的时候，如果函数需要传入形参，而你没有传入，则形参将会变为undefined
+        如果你在事件名后未加上则浏览器自动传入一个event对象，而不是undefined
+-->
+    <button @click="btnClick1()">按钮3</button>
+<!--    以下为不加()括号，不加括号函数将会将获取一个$event事件形参-->
+    <button @click="btnClick1">按钮4</button>
+    <button @click="btnClick1(123)">按钮5</button>
+<!--    方法定义时，我们需要event对象，同时又需要其他对象-->
+<!--    如果使用以下的方式去获取event，函数获取到的是一个变量，而不是一个事件-->
+    <button @click="btnClick3(123,event)">按钮5</button>
+<!--    在调用方法时，如何手动的获得到浏览器参数的event对象：$event-->
+<!--    下面代码才是一个正确的获取方式-->
+    <button @click="btnClick3(123,$event)">按钮6</button>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+      const vue = new Vue({
+        el:'#app',
+        data: {
+          message: '你好',
+        },
+        methods:{
+          btnClick(){
+            console.log("btnClick")
+          },
+          btnClick1(abc){
+            console.log("btnClick1",abc)
+          },
+          btnClick3(abc, event){
+            console.log("------",abc,event)
+          }
+        }
+      })
+    </script>
+</body>
+</html>
