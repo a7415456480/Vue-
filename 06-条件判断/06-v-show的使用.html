@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--
+  v-if    决定标签是否在虚拟DOM内
+    使用场景: 不要反复显示的标签
+  v-show  决定标签是否在标签中添加行内样式 display:none
+    使用场景：需要反复的显示标签
+-->
+  <div id="app">
+        <h2 v-if="isShow">{{message}}</h2>
+    <h2 v-show="isShow">{{message}}</h2>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+      const vue = new Vue({
+        el:'#app',
+        data: {
+          message: '你好',
+          isShow: true,
+        }
+      })
+    </script>
+</body>
+</html>

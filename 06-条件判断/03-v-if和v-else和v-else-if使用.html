@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <div id="app">
+        <h2>{{message}}</h2>
+    <input type="text" :value="result" @keyup.enter="changeResult(result)">
+    <h2 v-if="result > 90">优秀</h2>
+    <h2 v-else-if="result >=60">及格</h2>
+    <h2 v-else>不及格</h2>
+<!--    在复杂的条件判断中使用计算属性去判断，不要使用v-if v-else-if 指令-->
+    <h2 >{{getResult}}</h2>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+      const vue = new Vue({
+        el:'#app',
+        data: {
+          message: '你好',
+          result: 99,
+        },
+        methods:{
+          changeResult(result){
+            this.result = result;
+          }
+        },
+        computed: {
+          getResult(){
+            let showMessage = '';
+            if (this.result > 90){
+              showMessage = "优秀";
+            }else if(this.result >=60){
+              showMessage = "及格";
+            }else {
+              showMessage = "不及格";
+            }
+            return showMessage;
+          }
+        }
+      })
+    </script>
+</body>
+</html>

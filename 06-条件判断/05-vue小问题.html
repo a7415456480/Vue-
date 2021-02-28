@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+<!--  由于在vue中的virtualDOM会出现复用标签的问题。在切换标签时如果标签可以复用则标签中的值将不会清空，
+      而会将其保留下来，这样会出现不需要的数据在标签中显示的问题，如果需要解决以下问题，可以使其标签中的key属性值不一致，
+      就可以将复用的问题解决。因为在vue中key属性是分辨这个标签是否能复用(一类)的标志。
+-->
+  <span v-if="isUser">
+    <label for="user-name" >用户账户</label>
+    <input type="text" id="user-name" placeholder="用户账户" key="username">
+    <button>提交</button>
+  </span>
+<!--  由于上下input标签中的key属性的值不一致，则vue认为两个input标签不能复用-->
+  <span v-else>
+    <label for="user-email">用户邮箱</label>
+    <input type="email" id="user-email" placeholder="用户邮箱" key="email">
+  </span>
+  <button @click="changeModel">切换按钮</button>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  const vue = new Vue({
+    el:'#app',
+    data: {
+      message: '你好',
+      isUser: true,
+    },
+    methods:{
+      changeModel(){
+        this.isUser = ! this.isUser;
+      }
+    }
+  })
+</script>
+</body>
+</html>

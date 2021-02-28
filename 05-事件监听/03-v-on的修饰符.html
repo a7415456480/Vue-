@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <div id="app">
+<!--
+  使用修饰符来解决在一个div内有多个事件时出现的冒泡问题(出发子节点的事件引起父节点一起触发事件的问题)
+  使用@click.stop修饰符来阻止冒泡的出现
+-->
+        <div @click="divClick">
+          <button @click.stop="btnClick"></button>
+        </div>
+<!--    .prevent修饰符的使用-->
+<!--    通过prevent来阻止默认事件的触发-->
+    <br>
+    <form action="baidu">
+<!--      submit中有默认提交事件,可以通过.prevent来阻止事件的触发-->
+      <input type="submit" value="提交" @click.prevent="submitClick">
+    </form>
+    <br>
+<!--    监听键盘的某个键帽-->
+    <input type="text" @keyup.enter="keyUp">
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+      const vue = new Vue({
+        el:'#app',
+        data: {
+          message: '你好',
+        },
+        methods:{
+          divClick(){
+            console.log("divClick");
+          },
+          btnClick(){
+            console.log("btnClick");
+          },
+          submitClick(){
+            console.log("submitClick");
+          },
+          keyUp(){
+            console.log("keyUp");
+          },
+        }
+      })
+    </script>
+</body>
+</html>
