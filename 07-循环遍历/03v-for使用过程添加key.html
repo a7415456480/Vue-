@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <div id="app">
+        <h2>{{message}}</h2>
+    <ul>
+<!--      由于vue内的虚拟dom主要是以key来分辨是否为同一个标签，在v-for的时候会重新生成一个标签，这时候
+          如果修改遍历对象中的值时(在对象中增加或删除元素)，虚拟DOM将会重新生成对象标签，而不是复用，这
+          样将会出现极大的性能问题，所以我们需要在v-for的标签中添加一个key以保证，虚拟dom可以认为对象
+          标签可以复用。
+-->
+<!--      在使用v-for的时候遍历数组，建议在标签中加入 :key属性，以达到复用的要求，增加程序的性能-->
+      <li v-for="item in letters" :key="item">{{item}}</li>
+    </ul>
+    <button @click="addArr">增加</button>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+      const vue = new Vue({
+        el:'#app',
+        data: {
+          message: '你好',
+          letters: ['A','B','C','D','E'],
+          index: 2,
+        },
+        methods:{
+          addArr(){
+            this.letters.splice(this.index,0,this.index+" 增加了")
+            this.index++;
+          }
+        }
+      })
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>书籍名称</th>
+      <th>出版日期</th>
+      <th>价格</th>
+      <th>购买数量</th>
+      <th>操作</th>
+    </tr>
+    </thead>
+    <tr v-for=" (item,index) in books">
+<!--      <td v-for="value in item">{{value}}</td>-->
+      <td>{{item.id}}</td>
+      <td>{{item.name}}</td>
+      <td>{{item.data}}</td>
+      <td>{{item.price}}</td>
+      <td>
+        <button @:click="add(index)">+</button>
+        {{item.count}}
+        <button @:click="sub(index)">-</button>
+      </td>
+      <td><button>删除</button></td>
+    </tr>
+<!--    <tbody v-for="item in books" :key="item.name">-->
+<!--    <td>{{item.id}}</td>-->
+<!--    <td>{{item.name}}</td>-->
+<!--    <td>{{item.data}}</td>-->
+<!--    <td>{{item.price}}</td>-->
+<!--    <td>{{item.count}}</td>-->
+<!--    <td><button>删除</button></td>-->
+    </tbody>
+  </table>
+</div>
+
+<script src="../js/vue.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
