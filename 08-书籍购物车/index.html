@@ -7,39 +7,50 @@
 </head>
 <body>
 <div id="app">
-  <table>
-    <thead>
-    <tr>
-      <th>ID</th>
-      <th>书籍名称</th>
-      <th>出版日期</th>
-      <th>价格</th>
-      <th>购买数量</th>
-      <th>操作</th>
-    </tr>
-    </thead>
-    <tr v-for=" (item,index) in books">
-<!--      <td v-for="value in item">{{value}}</td>-->
-      <td>{{item.id}}</td>
-      <td>{{item.name}}</td>
-      <td>{{item.data}}</td>
-      <td>{{item.price}}</td>
-      <td>
-        <button @:click="add(index)">+</button>
-        {{item.count}}
-        <button @:click="sub(index)">-</button>
-      </td>
-      <td><button>删除</button></td>
-    </tr>
-<!--    <tbody v-for="item in books" :key="item.name">-->
-<!--    <td>{{item.id}}</td>-->
-<!--    <td>{{item.name}}</td>-->
-<!--    <td>{{item.data}}</td>-->
-<!--    <td>{{item.price}}</td>-->
-<!--    <td>{{item.count}}</td>-->
-<!--    <td><button>删除</button></td>-->
-    </tbody>
-  </table>
+  <div v-if="books.length">
+    <table>
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>书籍名称</th>
+        <th>出版日期</th>
+        <th>价格</th>
+        <th>购买数量</th>
+        <th>操作</th>
+      </tr>
+      </thead>
+      <tr v-for=" (item, index) in books">
+        <!--      <td v-for="value in item">{{value}}</td>-->
+        <td>{{item.id}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.data}}</td>
+        <!--      使用过滤器去解决显示小数点，并在前面加上￥符号,
+                  使用过滤器，会将使用过滤器的作为参数传入
+        -->
+        <td>{{item.price | showPrice()}}</td>
+        <!--      使用方法去解决-->
+        <!--      <td>{{getFinalPrice(item.price)}}</td>-->
+        <td>
+          <button @click="increment(index)">+</button>
+          {{item.count}}
+          <button @click="decrement(index)" v-bind:disabled="item.count <= 1">-</button>
+        </td>
+        <td><button @click="removeHandler(index)">删除</button></td>
+      </tr>
+      <!--    <tbody v-for="item in books" :key="item.name">-->
+      <!--    <td>{{item.id}}</td>-->
+      <!--    <td>{{item.name}}</td>-->
+      <!--    <td>{{item.data}}</td>-->
+      <!--    <td>{{item.price}}</td>-->
+      <!--    <td>{{item.count}}</td>-->
+      <!--    <td><button>删除</button></td>-->
+      </tbody>
+    </table>
+    <h2>总价格：{{totalPrice | showPrice}}</h2>
+  </div>
+  <div v-else>
+    <h2>购物车为空</h2>
+  </div>
 </div>
 
 <script src="../js/vue.js"></script>
